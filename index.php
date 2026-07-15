@@ -36,9 +36,8 @@ global $CFG, $OUTPUT, $USER, $SITE, $PAGE;
 // Ensure only administrators have access.
 $homeurl = new moodle_url('/');
 require_login();
-if (!is_siteadmin()) {
-    redirect($homeurl, get_string('adminonly', 'badges', 5));
-}
+$context = context_system::instance();
+require_capability('tool/uploadenrolmentmethods:use', $context);
 
 // URL Parameters.
 // There are none.
