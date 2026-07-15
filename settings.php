@@ -24,9 +24,15 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($hassiteconfig) {
-    $ADMIN->add('enrolments', new admin_externalpage('tool_uploadenrolmentmethods',
-            get_string('pluginname', 'tool_uploadenrolmentmethods'),
-            new moodle_url('/admin/tool/uploadenrolmentmethods/')
+// On vérifie que l'utilisateur a la capability requise avant de construire le menu
+if ($hassiteconfig || has_capability('tool/uploadenrolmentmethods:use', context_system::instance())) {
+    
+    // Le premier paramètre 'users' est la clé de la catégorie "Utilisateurs" dans Moodle
+    $ADMIN->add('users', new admin_externalpage(
+        'tool_uploadenrolmentmethods', 
+        get_string('pluginname', 'tool_uploadenrolmentmethods'), 
+        new moodle_url('/admin/tool/uploadenrolmentmethods/index.php'),
+        'tool/uploadenrolmentmethods:use'
     ));
+    
 }
