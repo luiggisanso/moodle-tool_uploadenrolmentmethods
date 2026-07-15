@@ -41,5 +41,18 @@ $capabilities = [
         'archetypes' => [
             'manager' => CAP_ALLOW,
         ],
+
+    'tool/uploadenrolmentmethods:use' => [
+        'riskbitmask' => RISK_DATALOSS | RISK_MANAGETRUST | RISK_PERSONAL,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+            'editingteacher' => CAP_PREVENT,
+            'teacher' => CAP_PREVENT,
+            'student' => CAP_PREVENT,
+            'guest' => CAP_PREVENT,
+            'user' => CAP_PREVENT
+        ],
     ],
 ];
