@@ -41,6 +41,7 @@ $capabilities = [
         'archetypes' => [
             'manager' => CAP_ALLOW,
         ],
+    ],
 
     'tool/uploadenrolmentmethods:use' => [
         'riskbitmask' => RISK_DATALOSS | RISK_MANAGETRUST | RISK_PERSONAL,
